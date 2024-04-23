@@ -1,9 +1,20 @@
 {
-    "json.schemaDownload.enable": true,
-    "eslint.rules.customizations": [
-        {
-            "rule": "*",
-            "severity": "warn"
-        },
-    ]
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    "workbench.startupEditor": "none",
+    "eslint.format.enable": true,
+    "editor.minimap.enabled": false,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
 }
