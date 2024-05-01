@@ -1,0 +1,21 @@
+WINDOWS ******************************************************************
+
+Instalación de NodeJS:
+    Descargar desde https://nodejs.org/dist/v18.20.2/node-v18.20.2-x64.msi
+    Ejecutar el archivo .msi para iinstalar.
+
+Instalación de VSC:
+    Descargar desde https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user
+    Ejecutar el archivo .exe para iinstalar.
+
+
+UBUNTU ******************************************************************
+
+Instalación de NodeJS:
+    sudo curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt update
+    sudo apt install nodejs
+
+Instalación de VSC:
+    sudo apt install snap
+    sudo snap install --classic code
