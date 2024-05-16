@@ -37,4 +37,4 @@ generarNumerosAleatoriosEntre1a20()
     .then((response) => console.log("Proceso terminado: ", response))
     .catch((error) => console.log(error.message));
 
-console.log("Hilo Principal");
+console.log("Hilo principal");
