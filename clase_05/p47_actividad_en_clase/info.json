@@ -1,0 +1,15 @@
+{
+	"contenidoStr": "\"{\\n    \\\"name\\\": \\\"actividad_en_clase_p47\\\",\\n    \\\"version\\\": \\\"1.0.0\\\",\\n    \\\"description\\\": \\\"Lectura y escritura de archivos\\\",\\n    \\\"scripts\\\": {\\n        \\\"test\\\": \\\"echo \\\\\\\"Error: no test specified\\\\\\\" && exit 1\\\"\\n    },\\n    \\\"keywords\\\": [],\\n    \\\"author\\\": \\\"Sergio Regalado Alessi\\\",\\n    \\\"license\\\": \\\"MIT\\\"\\n}\"",
+	"contenidoObj": {
+		"name": "actividad_en_clase_p47",
+		"version": "1.0.0",
+		"description": "Lectura y escritura de archivos",
+		"scripts": {
+			"test": "echo \"Error: no test specified\" && exit 1"
+		},
+		"keywords": [],
+		"author": "Sergio Regalado Alessi",
+		"license": "MIT"
+	},
+	"size": 286
+}
