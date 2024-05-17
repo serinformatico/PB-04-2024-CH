@@ -1,0 +1,11 @@
+{
+    "name": "actividad_en_clase_p47",
+    "version": "1.0.0",
+    "description": "Lectura y escritura de archivos",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Sergio Regalado Alessi",
+    "license": "MIT"
+}
