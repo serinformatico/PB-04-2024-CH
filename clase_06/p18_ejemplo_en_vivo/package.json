@@ -1,0 +1,14 @@
+{
+    "name": "p18_ejemplo_en_vivo",
+    "version": "1.0.0",
+    "description": "Mi Primer Servidor HTTP",
+    "main": "server.js",
+    "scripts": {
+        "start": "node --watch --no-warnings ./server.js",
+        "stop-linux": "killall -9 node",
+        "stop-windows": "taskkill /F /IM node.exe"
+    },
+    "keywords": [],
+    "author": "Sergio Regalado Alessi",
+    "license": "MIT"
+}
