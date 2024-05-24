@@ -1,0 +1,19 @@
+{
+    "name": "p50_ejemplo_en_vivo",
+    "version": "1.0.0",
+    "description": "Mi API RESTful",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node --watch --no-warnings ./server.js",
+        "stop-windows": "taskkill /F /IM node.exe",
+        "stop-linux": "killall -9 node",
+        "stop-mac": "pkill -f node"
+    },
+    "keywords": [],
+    "author": "Sergio Regalado Alessi",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.19.2"
+    }
+}
