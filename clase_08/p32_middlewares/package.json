@@ -1,0 +1,19 @@
+{
+    "name": "p32_middlewares",
+    "version": "1.0.0",
+    "description": "Tipos de Middlewares",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node --watch --no-warnings ./server.js",
+        "stop-windows": "taskkill /F /IM node.exe",
+        "stop-linux": "killall -9 node"
+    },
+    "keywords": [],
+    "author": "Sergio Regalado Alessi",
+    "license": "MIT",
+    "dependencies": {
+        "cookie-parser": "^1.4.6",
+        "express": "^4.19.2"
+    }
+}

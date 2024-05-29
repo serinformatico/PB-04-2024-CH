@@ -7,8 +7,7 @@
     "scripts": {
         "start": "node --watch --no-warnings ./server.js",
         "stop-windows": "taskkill /F /IM node.exe",
-        "stop-linux": "killall -9 node",
-        "stop-mac": "pkill -f node"
+        "stop-linux": "killall -9 node"
     },
     "keywords": [],
     "author": "Sergio Regalado Alessi",

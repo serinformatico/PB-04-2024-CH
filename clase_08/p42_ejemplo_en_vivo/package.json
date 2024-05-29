@@ -1,0 +1,19 @@
+{
+    "name": "p42_ejemplo_en_vivo",
+    "version": "1.0.0",
+    "description": "Instalación de Multer",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node --watch --no-warnings ./src/server.js",
+        "stop-windows": "taskkill /F /IM node.exe",
+        "stop-linux": "killall -9 node"
+    },
+    "keywords": [],
+    "author": "Sergio Regalado Alessi",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.19.2",
+        "multer": "^1.4.5-lts.1"
+    }
+}
