@@ -1,0 +1,15 @@
+<h1>Bienvenido {{person.name}} {{person.surname}}</h1>
+
+{{!-- Estructura de control --}}
+{{#if isOlder }}
+<p>Eres mayor de edad</p>
+{{else}}
+<p>Eres menor de edad</p>
+{{/if}}
+
+<h4>HOBBIES</h4>
+
+{{!-- Estructura iterativa (for) --}}
+{{#each person.hoobies}}
+<li>índice:{{@index}} - Valor: {{this}}</li>
+{{/each}}

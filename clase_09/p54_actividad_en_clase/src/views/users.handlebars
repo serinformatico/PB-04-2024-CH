@@ -1,0 +1,17 @@
+<h1>Usuarios</h1>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+    </tr>
+    {{#each users }}
+    <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.password}}</td>
+    </tr>
+    {{/each}}
+</table>
+<p>Hace clic <a href="http://localhost:8080/api/users/register">aquí</a> para registrar otro usuario</p>

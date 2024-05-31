@@ -11,7 +11,7 @@ router.post("/", (req, res) => {
     const { name, surname } = req.body;
 
     users.push({ name, surname });
-    res.send({ status: "success" })
+    res.send({ status: "success" });
 });
 
 export default router;
