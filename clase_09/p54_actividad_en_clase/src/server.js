@@ -1,24 +1,20 @@
 /*
-    ACTIVIDAD EN CLASE: Express + multer
+    ACTIVIDAD EN CLASE: Handlebars con express
 
-    Basado en el formulario para ingresar una mascota al sistema:
+    Realizar un formulario en una nueva plantilla.
 
-    1. Configurar el formulario para añadir un campo input type="file"
-       name "file" para que la mascota a agregar pueda tener una "imagen
-       representativa".
-    2. El nombre del archivo guardado se formará con el nombre original
-       anteponiéndole un timestamp (Date.now()) seguido con un guión.
-       Ej: 1610894554093-clase1.zip.
-    3. Corroborar que la imagen se guarde correctamente. Guardar la ruta
-       del archivo guardado en un campo "thumbnail".
+    1. Se creará un archivo "register.handlebars" como nueva plantilla,
+       donde se colocará un form.
+    2. Dicho form debe servir para registrar un usuario, por lo que
+       contará con nombre, correo, y contraseña.
+    3. Enviar los datos a una ruta POST ‘/user’, y guardar el usuario
+       en un arreglo. Confirmar que el guardado se realice exitosamente.
 */
 
 import express from "express";
-import path from "path";
-
-// Importación de enrutadores
+import handlebars from "express-handlebars";
+import paths from "./utils/paths.js";
 import usersRouter from "./routes/users.router.js";
-import petsRouter from "./routes/pets.router.js";
 
 const server = express();
 const PORT = 8080;
@@ -27,12 +23,16 @@ const HOST = "localhost";
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
+// Declaración del motor de plantillas
+server.engine("handlebars", handlebars.engine());
+server.set("views", paths.views);
+server.set("view engine", "handlebars");
+
 // Declaración de ruta estática: http://localhost:8080/api/public
-server.use("/api/public", express.static(path.join("src", "public")));
+server.use("/api/public", express.static(paths.public));
 
 // Declaración de enrutadores
 server.use("/api/users", usersRouter);
-server.use("/api/pets", petsRouter);
 
 // Control de rutas inexistentes
 server.use("*", (req, res) => {

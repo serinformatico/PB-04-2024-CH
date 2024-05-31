@@ -22,7 +22,7 @@ router.post("/", uploader.single("file"), (req, res) => {
         specie,
     });
 
-    res.status(303).redirect(`http://localhost:8080/api/public`);
+    res.status(303).redirect("http://localhost:8080/api/public");
 });
 
 export default router;

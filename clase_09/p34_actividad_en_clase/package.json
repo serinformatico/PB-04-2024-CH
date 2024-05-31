@@ -1,7 +1,7 @@
 {
-    "name": "p51_actividad_en_clase",
+    "name": "p23_handlebars",
     "version": "1.0.0",
-    "description": "Servidor de NodeJS + Express + Multer + Eslint",
+    "description": "Servidor de NodeJS + Motor de Plantillas",
     "main": "server.js",
     "type": "module",
     "scripts": {
@@ -15,7 +15,7 @@
     "license": "MIT",
     "dependencies": {
         "express": "^4.19.2",
-        "multer": "^1.4.5-lts.1"
+        "express-handlebars": "^7.1.2"
     },
     "devDependencies": {
         "eslint": "^8.57.0"

@@ -1,0 +1,11 @@
+<h1>Comidas</h1>
+
+{{#if isAdmin}}
+<ul>
+    {{#each food }}
+    <li>Nombre: {{this.name}} Precio: ${{this.name}}</li>
+    {{/each}}
+</ul>
+{{else}}
+<p>No eres un administrador</p>
+{{/if}}
