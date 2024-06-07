@@ -1,0 +1,12 @@
+[
+	{
+		"id": 11,
+		"products": [
+			{
+				"id_product": 2,
+				"amount": 3,
+				"total": 300
+			}
+		]
+	}
+]
