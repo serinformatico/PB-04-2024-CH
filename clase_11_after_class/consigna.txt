@@ -1,6 +1,6 @@
-Cosigna:
+Consigna:
 
-Armar una API para la gestion de productos y carrito de compras.
+Armar una API para la gestión de productos y carrito de compras.
 Crear tres productos (id_product, amount, price) que se guarden
 en un array. Para el caso de los carritos, se debe crear una clase
 de tipo manager que administre los carritos de compras. Cada carrito

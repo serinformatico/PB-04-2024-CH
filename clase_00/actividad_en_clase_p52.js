@@ -1,10 +1,10 @@
 /*
     ACTIVIDAD EN CLASE: Datos y variables
 
-    Deﬁnir variables que almacenen datos (nombre, edad, precio, nombres
+    Definir variables que almacenen datos (nombre, edad, precio, nombres
     de series y películas), mostrar esos valores por consola, incrementar
     la edad en 1, una serie a la lista y volver a mostrarlas. Compartir
-    la deﬁnición en el Visual Studio Code (de ahora en mas, VSC).
+    la definición en el Visual Studio Code (de ahora en mas, VSC).
 */
 
 let nombre = "Juan";
