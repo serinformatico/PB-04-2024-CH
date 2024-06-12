@@ -37,6 +37,7 @@ socket.on("message-logs", (data) => {
     if (!user) return;
 
     const messageLogs = document.getElementById("message-logs");
+    messageLogs.innerText = "";
 
     data.messages.forEach((message) => {
         const li = document.createElement("li");

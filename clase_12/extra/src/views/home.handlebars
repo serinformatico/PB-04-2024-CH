@@ -1,0 +1,42 @@
+<header>
+    <h1>WEBSOCKET</h1>
+</header>
+
+<main>
+    <section style="width: 184px; margin: 1rem 0; padding: 1rem; background-color: beige;">
+        <h3>Formulario</h3>
+        <form method="POST" action="/api/products" style="display: flex; flex-direction: column; gap: 1rem">
+            <div>
+                <label for="id-new-product">ID del producto</label>
+                <input type="number" name="id" id="id-new-product">
+            </div>
+            <div>
+                <label for="name-new-product">Nombre del producto</label>
+                <input type="text" name="name" id="name-new-product">
+            </div>
+            <div>
+                <label for="stock-new-product">Stock del producto</label>
+                <input type="number" name="stock" id="stock-new-product">
+            </div>
+
+            <input type="submit" value="Guardar">
+        </form>
+    </section>
+
+    <section>
+        <div>
+            <label for="input-product-id">ID del producto para eliminar</label>
+            <div>
+                <input type="number" id="input-product-id">
+                <button id="btn-product-delete">Eliminar</button>
+            </div>
+        </div>
+        <div>
+            <h3>Productos</h3>
+            <ul id="products-list"></ul>
+        </div>
+    </section>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/api/public/js/home.js"></script>

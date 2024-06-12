@@ -1,10 +1,10 @@
 DEPLOY - INSTRUCCIONES:
 
-1. Crear un repositorio de Github. Ej: mi-proyecto-backend
-2. Subir el código al repositorio de Github
+1. Crear un repositorio de GitHub. Ej: mi-proyecto-backend
+2. Subir el código al repositorio de GitHub
 3. Crear una cuenta en Glitch.com
-4. Crear un nuevo proyecto en Glitch.com a partir de Github
-    -> Hacer clic en el botón "New Proyect"
+4. Crear un nuevo proyecto en Glitch.com a partir de GitHub
+    -> Hacer clic en el botón "New Project"
     -> Hacer clic en el botón "Import from GutHub"
     -> Ingresar la URL del repositorio: https://github.com/serinformatico/mi-proyecto-backend.git
 5. Esperar a que Glitch.com cree el proyecto (suele demorar)

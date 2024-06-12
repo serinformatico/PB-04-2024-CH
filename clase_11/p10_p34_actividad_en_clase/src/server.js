@@ -6,7 +6,7 @@
     es realizando un chat comunitario.
 
     Nuestro chat comunitario contará con:
-    1. Una vista que cuente con un formulario para poder identiﬁcarse. El
+    1. Una vista que cuente con un formulario para poder identificarse. El
        usuario podrá elegir el nombre de usuario con el cual aparecerá en
        el chat.
     2. Un cuadro de input sobre el cual el usuario podrá escribir el mensaje.
@@ -21,10 +21,10 @@
     Con base en el servidor con chat de websocket que se ha desarrollado.
     Crear nuevos eventos para que:
 
-    5. Cuando el usuario se autentique correctamente, elservidor le mande
+    5. Cuando el usuario se autentique correctamente, el servidor le mande
        los logs de todo el chat.
     6. Cuando el usuario se autentique correctamente, todos los demás
-       usuarios (menos el que se acaba de registrar) reciban una notiﬁcación
+       usuarios (menos el que se acaba de registrar) reciban una notificación
        indicando qué usuario se acaba de conectar. (utiliza Swal toast).
 */
 
@@ -49,18 +49,18 @@ server.use("/api/public", express.static(paths.public));
 
 // Control de rutas inexistentes
 server.use("*", (req, res) => {
-    res.status(404).send("<h1>Error 404</h1><h3>La URL indicada no existe en este servidor</h3>");
+   res.status(404).send("<h1>Error 404</h1><h3>La URL indicada no existe en este servidor</h3>");
 });
 
 // Control de errores internos
 server.use((error, req, res) => {
-    console.log("Error:", error.message);
-    res.status(500).send("<h1>Error 500</h1><h3>Se ha generado un error en el servidor</h3>");
+   console.log("Error:", error.message);
+   res.status(500).send("<h1>Error 500</h1><h3>Se ha generado un error en el servidor</h3>");
 });
 
 // Método oyente de solicitudes
 const serverHTTP = server.listen(PORT, () => {
-    console.log(`Ejecutandose en http://${HOST}:${PORT}`);
+   console.log(`Ejecutándose en http://${HOST}:${PORT}`);
 });
 
 // Configuración del servidor de websocket
