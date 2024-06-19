@@ -23,7 +23,7 @@ datos:
 9. Listar los clientes que tengan 25 años ó menos.
 10. Listar los clientes que NO tengan 25 años.
 11. Listar los clientes que estén entre los 26 y 35 años.
-12. Actualizar la edad de Federico a 36 años, listando y verificando que no
+12. Actualizar la edad de Fede a 36 años, listando y verificando que no
     aparezca en el último listado.
 13. Actualizar todas las edades de 25 años a 26 años, listando y verificando
     que aparezcan en el último listado.
