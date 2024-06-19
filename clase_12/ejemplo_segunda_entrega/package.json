@@ -1,7 +1,7 @@
 {
-    "name": "proyecto_base",
+    "name": "ejemplo_segunda_entrega",
     "version": "1.0.0",
-    "description": "Proyecto Base (Servidor de Node JS + Express)",
+    "description": "Ejemplo de la primera entrega del proyecto integrador",
     "main": "src/server.js",
     "type": "module",
     "scripts": {
@@ -15,7 +15,9 @@
     "author": "Sergio Regalado Alessi",
     "license": "MIT",
     "dependencies": {
-        "express": "^4.19.2"
+        "express": "^4.19.2",
+        "express-handlebars": "^7.1.2",
+        "socket.io": "^4.7.5"
     },
     "devDependencies": {
         "eslint": "^8.57.0"

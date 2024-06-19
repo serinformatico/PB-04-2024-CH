@@ -32,6 +32,5 @@
   10. db.estudiantes.find({ nombre: { $in: ["Juan", "Maria"] } })
   11. db.estudiantes.find({ nombre: { $nin: ["Juan", "Maria"] } })
   12. db.estudiantes.find({ hobbies: { $size: 3 } })
-  13. db.estudiantes.find({ hobbies: { $all: [85, 90] } })
-  14. db.estudiantes.find({ hobbies: { $all: ["nadar", "correr"] } })
-  15. db.estudiantes.find({ proyectos: { $elemMatch: { nombre: "Proyecto1", nota: { $gt: 75 } } } })
+  13. db.estudiantes.find({ hobbies: { $all: ["nadar", "correr"] } })
+  14. db.estudiantes.find({ proyectos: { $elemMatch: { nombre: "Proyecto1", nota: { $gt: 75 } } } })

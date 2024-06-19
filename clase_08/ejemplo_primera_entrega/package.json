@@ -1,12 +1,11 @@
 {
-    "name": "proyecto_base",
+    "name": "ejemplo_primera_entrega",
     "version": "1.0.0",
-    "description": "Proyecto Base (Servidor de Node JS + Express)",
+    "description": "Ejemplo de la primera entrega del proyecto integrador",
     "main": "src/server.js",
     "type": "module",
     "scripts": {
-        "dev": "node --watch --no-warnings ./src/server.js",
-        "start": "node ./src/server.js",
+        "start": "node --watch --no-warnings ./src/server.js",
         "stop-windows": "taskkill /F /IM node.exe",
         "stop-linux": "killall -9 node",
         "lint": "eslint ./src --fix"
