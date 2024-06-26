@@ -4,7 +4,7 @@ import StudentModel from "../models/student.model.js";
 const router = Router();
 
 router.get("/", async (req, res) => {
-    const students = await StudentModel.find(filters);
+    const students = await StudentModel.find({ name: "Juan" });
     res.status(200).json({ status: true, payload: students });
 });
 

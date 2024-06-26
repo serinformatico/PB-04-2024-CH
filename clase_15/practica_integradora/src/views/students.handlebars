@@ -1,0 +1,33 @@
+<header>
+    <h1>Estudiantes</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Listado</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-rows">
+                {{#each students}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.surname}}</td>
+                    <td>{{this.email}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <button id="btn-refresh-table-rows">Recargar Tabla</button>
+    </section>
+</main>
+
+<script src="/public/js/students.script.js"></script>
