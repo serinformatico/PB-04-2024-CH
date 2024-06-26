@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const studentSchema = new Schema({
-    name: { type: String, required: true, uppercase: true, trim: true, maxLength: 25 },
+    name: { type: String, required: true, trim: true, maxLength: 25 },
     surname: { type: String, required: true },
     age: { type: Number, min: 18, max: 65 },
     email: { type: String, unique: true },
