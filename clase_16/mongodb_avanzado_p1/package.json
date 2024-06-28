@@ -1,0 +1,25 @@
+{
+    "name": "mongodb_avanzado_p1",
+    "version": "1.0.0",
+    "description": "Servidor de Node JS + Express + MongoDB + ODM Mongoose",
+    "main": "src/server.js",
+    "type": "module",
+    "scripts": {
+        "dev": "node --watch --no-warnings ./src/server.js",
+        "start": "node ./src/server.js",
+        "stop-windows": "taskkill /F /IM node.exe",
+        "stop-linux": "killall -9 node",
+        "lint": "eslint ./src --fix"
+    },
+    "keywords": [],
+    "author": "Sergio Regalado Alessi",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.19.2",
+        "mongoose": "^8.4.1"
+    },
+    "devDependencies": {
+        "eslint": "^8.57.0",
+        "eslint-plugin-mongodb": "^1.0.0"
+    }
+}

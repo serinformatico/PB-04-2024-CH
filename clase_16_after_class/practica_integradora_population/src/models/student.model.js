@@ -39,6 +39,44 @@ const studentSchema = new Schema({
         required: [ true, "La imagen es obligatoria" ],
         trim: true,
     },
+    courses: [{ type: Schema.Types.ObjectId, ref: "courses" }],
+}, {
+    timestamps: true, // Añade timestamps para generar createdAt y updatedAt
+});
+
+studentSchema.index({ name: 1, surname: 1 }, { name: "idx_name_surname" });
+
+// Función para agregar este estudiante en los cursos
+const addStudentInCourses = async (studentModel, courseModel) => {
+    await courseModel.updateMany(
+        { _id: { $in: studentModel.courses } },
+        { $addToSet: { students: studentModel._id } },
+    );
+};
+
+// Función para eliminar este estudiante en los cursos
+const removeStudentInCourses = async (studentModel, courseModel) => {
+    await courseModel.updateMany(
+        { students: studentModel._id },
+        { $pull: { students: studentModel._id } },
+    );
+};
+
+// Middleware para actualizar la referencia en los cursos al crear/actualizar un estudiante
+studentSchema.pre("save", async function(next) {
+    const CourseModel = this.model("courses");
+
+    removeStudentInCourses(this, CourseModel);
+    addStudentInCourses(this, CourseModel);
+    next();
+});
+
+// Middleware para eliminar la referencia en los cursos al eliminar un estudiante
+studentSchema.pre("findByIdAndDelete", async function(next) {
+    const CourseModel = this.model("courses");
+
+    removeStudentInCourses(this, CourseModel);
+    next();
 });
 
 const StudentModel = model("students", studentSchema);
