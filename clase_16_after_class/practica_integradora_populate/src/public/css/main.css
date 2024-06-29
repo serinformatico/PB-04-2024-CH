@@ -17,3 +17,7 @@ table tr td {
     border: 1px solid brown;
     padding: 0.25rem;
 }
+
+button {
+    margin-top: 0.5rem;
+}

@@ -18,13 +18,29 @@ const courseSchema = new Schema({
         type: Date,
         required: [ true, "La fecha de finalización es obligatoria" ],
     },
-    // RELACIÓN FÍSICA 0:N
-    students: [{
-        type: Schema.Types.ObjectId,
-        ref: "students",
-    }],
 }, {
     timestamps: true, // Añade timestamps para generar createdAt y updatedAt
+    toJSON: { virtuals: true }, // Permite que los campos virtuales se incluyan en el JSON.
+});
+
+// RELACIÓN INVERSA 0:N - Es una relación virtual que sirva para incluir los estudiantes del curso.
+courseSchema.virtual("students", {
+    ref: "students",
+    localField: "_id",
+    foreignField: "courses",
+    justOne: false,
+});
+
+// Middleware que elimina la referencia en los estudiantes al eliminar el curso.
+courseSchema.pre("findByIdAndDelete", async function(next) {
+    const StudentModel = this.model("students");
+
+    await StudentModel.updateMany(
+        { courses: this._id },
+        { $pull: { courses: this._id } },
+    );
+
+    next();
 });
 
 const CourseModel = model("courses", courseSchema);
