@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    color: brown;
+}
+
+table {
+    width: 600px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr th,
+table tr td {
+    border: 1px solid brown;
+    padding: 0.25rem;
+}
+
+button {
+    margin-top: 0.5rem;
+}
