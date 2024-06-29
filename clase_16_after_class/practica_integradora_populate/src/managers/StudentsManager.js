@@ -127,7 +127,7 @@ export default class StudentsManager {
             await this.#studentModel.findByIdAndDelete(id);
             await fileSystem.deleteImage(studentFound.thumbnail);
 
-            return student;
+            return studentFound;
         } catch (error) {
             throw new Error(error.message);
         }

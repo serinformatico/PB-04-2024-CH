@@ -107,7 +107,7 @@ export default class CoursesManager {
 
             await this.#courseModel.findByIdAndDelete(id);
 
-            return course;
+            return courseFound;
         } catch (error) {
             throw new Error(error.message);
         }

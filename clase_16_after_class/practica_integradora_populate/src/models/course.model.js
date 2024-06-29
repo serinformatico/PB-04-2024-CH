@@ -18,42 +18,13 @@ const courseSchema = new Schema({
         type: Date,
         required: [ true, "La fecha de finalización es obligatoria" ],
     },
-    students: [{ type: Schema.Types.ObjectId, ref: "students" }],
+    // RELACIÓN FÍSICA 0:N
+    students: [{
+        type: Schema.Types.ObjectId,
+        ref: "students",
+    }],
 }, {
     timestamps: true, // Añade timestamps para generar createdAt y updatedAt
-});
-
-// Función para agregar este curso en los estudiantes
-const addCoursesInStudent = async function (courseModel, studentModel) {
-    await studentModel.updateMany(
-        { _id: { $in: courseModel.students } },
-        { $addToSet: { courses: courseModel._id } },
-    );
-};
-
-// Función para eliminar este curso en los estudiantes
-const removeCoursesInStudent = async function (courseModel, studentModel) {
-    await studentModel.updateMany(
-        { courses: courseModel._id },
-        { $pull: { courses: courseModel._id } },
-    );
-};
-
-// Middleware para actualizar la referencia en los estudiantes al crear/actualizar un curso
-courseSchema.pre("save", async function(next) {
-    const StudentModel = this.model("students");
-
-    removeCoursesInStudent(this, StudentModel);
-    addCoursesInStudent(this, StudentModel);
-    next();
-});
-
-// Middleware para eliminar la referencia en los estudiantes al eliminar un curso
-courseSchema.pre("findByIdAndDelete", async function(next) {
-    const StudentModel = this.model("students");
-
-    removeCoursesInStudent(this, StudentModel);
-    next();
 });
 
 const CourseModel = model("courses", courseSchema);
