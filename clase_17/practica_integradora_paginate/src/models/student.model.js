@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import paginate from "mongoose-paginate-v2";
 
 const studentSchema = new Schema({
     name: {
@@ -50,6 +51,9 @@ const studentSchema = new Schema({
 
 // Índice compuesto para nombre y apellido
 studentSchema.index({ name: 1, surname: 1 }, { name: "idx_name_surname" });
+
+// Agrega mongoose-paginate-v2 para habilitar las funcionalidades de paginación.
+studentSchema.plugin(paginate);
 
 const StudentModel = model("students", studentSchema);
 

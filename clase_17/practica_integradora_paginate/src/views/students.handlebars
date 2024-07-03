@@ -1,0 +1,65 @@
+<header>
+    <h1>Estudiantes</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Controles</h3>
+        <div>
+            <div>
+                {{#if data.hasPrevPage}}
+                <a href="/students?page={{data.prevPage}}"><button>Anterior</button></a>
+                {{/if}}
+
+                {{#if data.hasNextPage}}
+                <a href="/students?page={{data.nextPage}}{{data.sort}}"><button>Siguiente</button></a>
+                {{/if}}
+
+                <a href="/students?page={{data.page}}&sort=asc"><button>⬇</button></a>
+                <a href="/students?page={{data.page}}&sort=desc"><button>⬆</button></a>
+                <a href="/students?page={{data.page}}"><button>⬌</button></a>
+
+                <p>
+                    Página <span id="page">{{data.page}}</span> de <span id="total-pages">{{data.totalPages}}</span>
+                    <br>
+                    <span>{{data.totalDocs}}</span> Documentos
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Listado</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Cursos</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-rows">
+                {{#each data.docs}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.surname}}</td>
+                    <td>{{this.email}}</td>
+                    <td>
+                        <ol>
+                            {{#each this.courses}}
+                            <li>{{this.name}}</li>
+                            {{/each}}
+                        </ol>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<script src="/public/js/students.script.js"></script>

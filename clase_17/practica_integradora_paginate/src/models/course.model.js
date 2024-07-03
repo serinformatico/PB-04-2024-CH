@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import paginate from "mongoose-paginate-v2";
 
 const courseSchema = new Schema({
     name: {
@@ -48,6 +49,9 @@ courseSchema.pre("findByIdAndDelete", async function(next) {
 
     next();
 });
+
+// Agrega mongoose-paginate-v2 para habilitar las funcionalidades de paginación.
+courseSchema.plugin(paginate);
 
 const CourseModel = model("courses", courseSchema);
 

@@ -32,9 +32,12 @@
     "cSpell.logLevel": "Information",
     "cSpell.language": "en,es-ES",
     "cSpell.words": [
+        "autopopulate",
         "enrutadores",
         "mongosh",
+        "paginación",
         "pasarle",
-        "Swal"
+        "Swal",
+        "virtuals"
     ]
 }

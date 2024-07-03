@@ -1,0 +1,18 @@
+<header>
+    <h1>Cursos</h1>
+</header>
+
+<main>
+    <section>
+        <ol>
+            {{#each data.docs}}
+            <li>{{this.name}}</li>
+            <ul>
+                {{#each this.students}}
+                <li>{{this.name}}, {{this.surname}}</li>
+                {{/each}}
+            </ul>
+            {{/each}}
+        </ol>
+    </section>
+</main>
