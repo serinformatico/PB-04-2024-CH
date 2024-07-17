@@ -1,0 +1,88 @@
+<header>
+    <h1>INICIO</h1>
+</header>
+
+<main>
+    <section class="container-ingredients-table">
+        <h3>Ingredientes</h3>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Controles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data.docs}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>
+                            <a href="/ingredients/{{this.id}}/recipe/{{this.currentRecipeId}}"><button
+                                    title="Ver más...">👁</button></a>
+                            <button onclick="addIngredient('{{this.currentRecipeId}}', '{{this.id}}')"
+                                title="Agregar en la receta">✅</button>
+                            <button onclick="removeIngredient('{{this.currentRecipeId}}', '{{this.id}}')"
+                                title="Quitar de la receta">❎</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div class="container-ingredients-table__pagination">
+                <div>
+                    {{#if data.prevPage}}
+                    <a href="/ingredients?page={{data.prevPage}}{{data.sort}}"><button>Anterior</button></a>
+                    {{/if}}
+
+                    {{#if data.hasNextPage}}
+                    <a href="/ingredients?page={{data.nextPage}}{{data.sort}}"><button>Siguiente</button></a>
+                    {{/if}}
+
+                    <a href="/ingredients?page={{data.page}}&sort=asc"><button>⬇</button></a>
+                    <a href="/ingredients?page={{data.page}}&sort=desc"><button>⬆</button></a>
+                    <a href="/ingredients?page={{data.page}}"><button>⬌</button></a>
+                </div>
+
+                <span>Página {{data.page}} de {{data.totalPages}} ({{data.totalDocs}} documentos)</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Formulario de Ingredientes</h3>
+        <form id="ingredients-form">
+            <input type="text" name="name" placeholder="Nombre del ingrediente">
+            <textarea name="description" placeholder="Descripción del ingrediente" rows="5"></textarea>
+            <select name="category">
+                <option value="LIQUIDO">LIQUIDO</option>
+                <option value="SOLIDO">SOLIDO</option>
+            </select>
+            <span><input type="checkbox" name="availability">Disponibilidad del ingrediente</span>
+            <input type="file" name="file" accept=".png,.jpg">
+
+            <input type="submit" value="Guardar" style="width: 100%">
+        </form>
+    </section>
+
+    <section class="container-ingredient-delete">
+        <h3>Eliminación de Ingredientes</h3>
+        <div>
+            <input type="text" id="input-ingredient-id" placeholder="ID del Ingrediente">
+            <button id="btn-delete-ingredient">Eliminar</button>
+        </div>
+    </section>
+
+    <section class="container-recipe-link">
+        <h3>Receta</h3>
+        <div>
+            <a href="/recipes/{{data.currentRecipeId}}" title="Ver detalles de la receta..."><span>📒</span></a>
+            <button onclick="removeAllIngredients('{{data.currentRecipeId}}')"
+                title="Eliminar todos los ingredientes de la receta">⛔</button>
+        </div>
+    </section>
+</main>
+
+<script src="/public/js/ingredients_with_http.js"></script>

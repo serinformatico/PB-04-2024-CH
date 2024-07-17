@@ -1,0 +1,43 @@
+<header>
+    <h1>RECETA</h1>
+</header>
+
+<main>
+    <section class="container-recipe-details">
+        <h3>Detalles</h3>
+        <ul>
+            <li>ID: <b>{{data._id}}</b></li>
+            <li>Observaciones: <b>{{data.observations}}</b></li>
+            <li>Creado: <i>{{data.createdAt}}hs</i></li>
+            <li>Actualizado: <i>{{data.updatedAt}}hs</i></li>
+        </ul>
+    </section>
+
+    <section class="container-recipe-table">
+        <h3>Ingredientes</h3>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data.ingredients}}
+                    <tr>
+                        <td>{{this.ingredient._id}}</td>
+                        <td>{{this.ingredient.name}}</td>
+                        <td>{{this.amount}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container-recipe-table__buttons">
+            <a href="/ingredients"><button title="Volver al inicio">↶</button></a>
+        </div>
+    </section>
+</main>

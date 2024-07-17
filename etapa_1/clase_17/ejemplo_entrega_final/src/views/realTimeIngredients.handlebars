@@ -1,0 +1,47 @@
+<header>
+    <h1>INICIO - TIEMPO REAL</h2>
+</header>
+
+<main>
+    <section class="container-ingredients-table">
+        <h3>Ingredientes</h3>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody id="ingredients-table-rows"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <h3>Formulario de Ingredientes</h3>
+        <form id="ingredients-form">
+            <input type="text" name="name" placeholder="Nombre del ingrediente">
+            <textarea name="description" placeholder="Descripción del ingrediente" rows="5"></textarea>
+            <select name="category">
+                <option value="LIQUIDO">LIQUIDO</option>
+                <option value="SOLIDO">SOLIDO</option>
+            </select>
+            <span><input type="checkbox" name="availability">Disponibilidad del ingrediente</span>
+            <input type="file" name="file" accept=".png,.jpg">
+
+            <input type="submit" value="Guardar" style="width: 100%">
+        </form>
+    </section>
+
+    <section class="container-ingredient-delete">
+        <h3>Eliminación de Ingredientes</h3>
+        <div>
+            <input type="text" id="input-ingredient-id" placeholder="ID del Ingrediente">
+            <button id="btn-delete-ingredient">Eliminar</button>
+        </div>
+    </section>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/ingredients_with_websocket.js"></script>

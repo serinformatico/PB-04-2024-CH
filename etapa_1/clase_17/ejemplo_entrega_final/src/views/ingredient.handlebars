@@ -1,0 +1,32 @@
+<header>
+    <h1>INGREDIENTE</h1>
+</header>
+
+<main>
+    <section class="container-ingredient-details">
+        <h3>Detalles</h3>
+        <ul>
+            <li>ID: <b>{{data._id}}</b></li>
+            <li>Nombre: <b>{{data.name}}</b></li>
+            <li>Descripción: <b>{{data.description}}</b></li>
+            <li>Categoría: <b>{{data.category}}</b></li>
+            <li>Disponible: <b>{{#if data.availability}}SI{{else}}NO{{/if}}</b></li>
+            <li>
+                Imagen:
+                <img src="/public/images/{{data.thumbnail}}" alt="Imagen del ingrediente">
+            </li>
+            <li>Creado: <i>{{data.createdAt}}hs</i></li>
+            <li>Actualizado: <i>{{data.updatedAt}}hs</i></li>
+        </ul>
+
+        <div class="container-ingredient-details__buttons">
+            <button onclick="addIngredient('{{data.currentRecipeId}}', '{{data._id}}')"
+                title="Agregar en la receta">✅</button>
+            <button onclick="removeIngredient('{{data.currentRecipeId}}', '{{data._id}}')"
+                title="Quitar de la receta">❎</button>
+            <a href="/ingredients"><button title="Volver al inicio">↶</button></a>
+        </div>
+    </section>
+</main>
+
+<script src="/public/js/ingredients_with_http.js"></script>
