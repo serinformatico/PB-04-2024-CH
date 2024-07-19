@@ -1,21 +1,21 @@
 import express from "express";
-import paths from "./utils/paths.js";
-import mongoDB from "./config/mongoose.config.js";
-import apiUsersRouter from "./routes/api.users.router.js";
+import cookieParser from "cookie-parser";
+import handlebars from "./config/handlebars.config.js";
+import loginRouter from "./routes/login.router.js";
 
 const server = express();
 const PORT = 8080;
 const HOST = "localhost";
 
-// Decodificadores del BODY
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
+server.use(cookieParser("miClaveSecreta"));
+
+// Configuración del motor de plantillas
+handlebars.config(server);
 
 // Enrutadores
-server.use("/api/users", apiUsersRouter);
-
-// Declaración de ruta estática: http://localhost:8080/api/public
-server.use("/public", express.static(paths.public));
+server.use("/login", loginRouter);
 
 // Control de rutas inexistentes
 server.use("*", (req, res) => {
@@ -29,7 +29,6 @@ server.use((error, req, res) => {
 });
 
 // Método oyente de solicitudes
-server.listen(PORT, async () => {
+server.listen(PORT, () => {
     console.log(`Ejecutándose en http://${HOST}:${PORT}`);
-    await mongoDB.connectDB();
 });

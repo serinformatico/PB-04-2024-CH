@@ -1,0 +1,35 @@
+<header>
+    <h1>Cookies</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Login</h3>
+
+        <form action="/login" method="post">
+            <div>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="email">Correo Electrónico</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <input type="submit" value="Configurar Cookie">
+        </form>
+
+        <input type="button" onclick="getCookie()" value="Obtener Cookie">
+    </section>
+
+    <script>
+
+        const getCookie = () => {
+            fetch("/login/get-cookies")
+                .then((response) => response.json())
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));
+        };
+
+    </script>
+</main>
