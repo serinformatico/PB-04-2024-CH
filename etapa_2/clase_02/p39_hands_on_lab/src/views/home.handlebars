@@ -1,0 +1,22 @@
+<header>
+    <h1>Inicio</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Menú</h3>
+        <ul>
+            {{#if loggedOut }}
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/register">Registrarse</a></li>
+            {{/if}}
+            {{#if loggedIn }}
+            <li><a href="/profile">Mi Perfil</a></li>
+            {{/if}}
+        </ul>
+
+        {{#if loggedIn }}
+        <a href="/api/sessions/logout"><button>Cerrar Sesión</button></a>
+        {{/if}}
+    </section>
+</main>

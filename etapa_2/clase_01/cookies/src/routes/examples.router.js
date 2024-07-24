@@ -59,4 +59,9 @@ router.get("/get-cookie-signed", (req, res) => {
     res.status(200).send("Cookie no encontrada.");
 });
 
+router.get("/delete-cookie", async (req, res) => {
+    res.clearCookie("saludo");
+    res.status(200).send("Cookie saludo eliminada.");
+});
+
 export default router;
