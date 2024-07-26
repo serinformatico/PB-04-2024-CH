@@ -1,0 +1,29 @@
+<header>
+    <h1>Inicio</h1>
+</header>
+
+<main>
+    <section>
+        {{#if name }}
+        <p>Hola {{name}}. Te damos la bienvenida al sistema</p>
+        {{/if}}
+    </section>
+
+    <section>
+        <h3>Menú</h3>
+        <ul>
+            {{#if loggedOut }}
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/register">Registrarse</a></li>
+            {{/if}}
+            {{#if loggedIn }}
+            <li><a href="/profile">Mi Perfil</a></li>
+            {{/if}}
+            <li><a href="/reset-password">Restaurar Contraseña</a></li>
+        </ul>
+
+        {{#if loggedIn }}
+        <a href="/logout"><button>Cerrar Sesión</button></a>
+        {{/if}}
+    </section>
+</main>

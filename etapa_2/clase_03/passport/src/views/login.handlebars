@@ -1,0 +1,27 @@
+<header>
+    <h1>Login</h1>
+</header>
+
+<main>
+    <section>
+        <form action="/login" method="post" style="display:flex; flex-direction: column; gap: 0.25rem;">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password">
+            </div>
+
+            <div style="margin-top: 1rem;">
+                <input type="submit" value="Aceptar">
+                <a href="/"><input type="button" value="Volver al Menú"></a>
+            </div>
+        </form>
+
+        {{#if errorMessage}}
+        <p style="color: red;">{{errorMessage}}</p>
+        {{/if}}
+    </section>
+</main>
