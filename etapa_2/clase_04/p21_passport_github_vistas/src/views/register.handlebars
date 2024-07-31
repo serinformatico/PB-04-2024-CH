@@ -1,0 +1,41 @@
+<header>
+    <h1>Registrarse con GitHub</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Datos Personales</h3>
+
+        <form action="/register" method="post" style="display:flex; flex-direction: column; gap: 0.25rem;">
+            <div>
+                <label for="gitHubId">ID GitHub</label>
+                <input type="text" name="gitHubId" id="gitHubId" value="{{gitHubId}}" readonly>
+            </div>
+            <div>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" value="{{name}}">
+            </div>
+            <div>
+                <label for="surname">Apellido</label>
+                <input type="text" name="surname" id="surname">
+            </div>
+            <div>
+                <label for="age">Edad</label>
+                <input type="text" name="age" id="age">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <div style="margin-top: 1rem;">
+                <input type="submit" value="Aceptar">
+                <a href="/"><input type="button" value="Volver al Menú"></a>
+            </div>
+        </form>
+
+        {{#if errorMessage}}
+        <p style="color: red;">{{errorMessage}}</p>
+        {{/if}}
+    </section>
+</main>

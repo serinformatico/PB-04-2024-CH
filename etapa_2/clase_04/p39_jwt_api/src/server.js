@@ -1,11 +1,11 @@
 import express from "express";
 import paths from "./utils/paths.js";
-
 import { config as dotenvConfig } from "dotenv";
 import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 
 import apiUsersRouter from "./routes/api.users.routes.js";
+import apiAuthRouter from "./routes/api.auth.routes.js";
 import homeRouter from "./routes/home.routes.js";
 
 const server = express();
@@ -14,21 +14,22 @@ const server = express();
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
-// Declaración de ruta estática: http://localhost:8080/api/public
-server.use("/public", express.static(paths.public));
-
 // Variables de entorno
 dotenvConfig({ path: paths.env });
-
-// Conexión con la Base de Datos
-connectDB();
 
 // Configuración del motor de plantillas
 configHandlebars(server);
 
+// Configuración de la Base de Datos
+connectDB();
+
 // Enrutadores
 server.use("/api/users", apiUsersRouter);
+server.use("/api/auth", apiAuthRouter);
 server.use("/", homeRouter);
+
+// Declaración de ruta estática: http://localhost:8080/api/public
+server.use("/public", express.static(paths.public));
 
 // Control de rutas inexistentes
 server.use("*", (req, res) => {

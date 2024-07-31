@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose";
 import UserModel from "../models/user.model.js";
-import mongoDB from "../config/mongoose.config.js";
+import { isValidID } from "../config/mongoose.config.js";
 import { createHash, isValidPassword } from "../utils/security.js";
 
 import {
@@ -9,6 +9,7 @@ import {
     ERROR_NOT_FOUND_ID,
     ERROR_NOT_FOUND_CREDENTIALS,
     ERROR_NOT_FOUND_EMAIL,
+    ERROR_NOT_FOUND_PROFILE,
 } from "../constants/messages.constant.js";
 
 export default class UserManager {
@@ -19,7 +20,7 @@ export default class UserManager {
     }
 
     #validateId = (id) => {
-        if (!mongoDB.isValidID(id)) {
+        if (!isValidID(id)) {
             throw new Error(ERROR_INVALID_ID);
         }
     };
@@ -57,6 +58,19 @@ export default class UserManager {
         }
     };
 
+    getOneByGitHubId = async (profile) => {
+        try {
+            const userFound = await this.#userModel.findOne({ gitHubId: profile.id });
+            if (!userFound) {
+                throw new Error(ERROR_NOT_FOUND_PROFILE);
+            }
+
+            return userFound;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    };
+
     getOneByEmailAndPassword = async (email, password) => {
         try {
             const userFound = await this.#userModel.findOne({ email });
@@ -78,7 +92,7 @@ export default class UserManager {
 
     insertOne = async (data) => {
         try {
-            data.password = createHash(data.password);
+            data.password = data.password ? createHash(data.password) : null;
             const userCreated = new UserModel(data);
             await userCreated.save();
 
@@ -100,6 +114,7 @@ export default class UserManager {
             const newValues = {
                 ...data,
                 password: data.password ? createHash(data.password) : data.password,
+
             };
 
             userFound.set(newValues);

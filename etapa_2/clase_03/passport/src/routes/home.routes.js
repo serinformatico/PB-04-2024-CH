@@ -132,4 +132,5 @@ router.get("/logout", async (req, res) => {
         errorHandler(res, error.message);
     }
 });
+
 export default router;

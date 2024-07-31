@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose";
 import UserModel from "../models/user.model.js";
-import mongoDB from "../config/mongoose.config.js";
+import { isValidID } from "../config/mongoose.config.js";
 import { createHash, isValidPassword } from "../utils/security.js";
 
 import {
@@ -19,7 +19,7 @@ export default class UserManager {
     }
 
     #validateId = (id) => {
-        if (!mongoDB.isValidID(id)) {
+        if (!isValidID(id)) {
             throw new Error(ERROR_INVALID_ID);
         }
     };
@@ -78,7 +78,7 @@ export default class UserManager {
 
     insertOne = async (data) => {
         try {
-            data.password = createHash(data.password);
+            data.password = data.password ? createHash(data.password) : null;
             const userCreated = new UserModel(data);
             await userCreated.save();
 
@@ -100,6 +100,7 @@ export default class UserManager {
             const newValues = {
                 ...data,
                 password: data.password ? createHash(data.password) : data.password,
+
             };
 
             userFound.set(newValues);

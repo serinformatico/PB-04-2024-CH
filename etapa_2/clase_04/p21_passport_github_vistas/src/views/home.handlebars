@@ -1,0 +1,21 @@
+<header>
+    <h1>Inicio</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Menú</h3>
+        <ul>
+            {{#if loggedOut }}
+            <li><a href="/api/auth/github">Iniciar Sesión con GitHub</a></li>
+            {{/if}}
+            {{#if loggedIn }}
+            <li><a href="/profile">Mi Perfil</a></li>
+            {{/if}}
+        </ul>
+
+        {{#if loggedIn }}
+        <a href="/logout"><button>Cerrar Sesión</button></a>
+        {{/if}}
+    </section>
+</main>

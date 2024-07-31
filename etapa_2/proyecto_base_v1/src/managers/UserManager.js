@@ -2,6 +2,7 @@
 import mongoose from "mongoose";
 import UserModel from "../models/user.model.js";
 import { isValidID } from "../config/mongoose.config.js";
+import { createHash, isValidPassword } from "../utils/security.js";
 
 import {
     ERROR_INVALID_ID,
@@ -54,8 +55,28 @@ export default class UserManager {
         }
     };
 
+    getOneByEmailAndPassword = async (email, password) => {
+        try {
+            const userFound = await this.#userModel.findOne({ email });
+            if (!userFound) {
+                throw new Error(ERROR_NOT_FOUND_CREDENTIALS);
+            }
+
+            const hash = userFound.password;
+
+            if (!isValidPassword(password, hash)) {
+                throw new Error(ERROR_NOT_FOUND_CREDENTIALS);
+            }
+
+            return userFound;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    };
+
     insertOne = async (data) => {
         try {
+            data.password = data.password ? createHash(data.password) : null;
             const userCreated = new UserModel(data);
             await userCreated.save();
 
@@ -74,7 +95,12 @@ export default class UserManager {
             this.#validateId(id);
             const userFound = await this.#findById(id);
 
-            userFound.set(data);
+            const newValues = {
+                ...data,
+                password: data.password ? createHash(data.password) : data.password,
+            };
+
+            userFound.set(newValues);
             await userFound.save();
 
             return userFound;

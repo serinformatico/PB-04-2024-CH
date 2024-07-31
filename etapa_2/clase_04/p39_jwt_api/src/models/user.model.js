@@ -29,10 +29,18 @@ const userSchema = new Schema({
         required: [ true, "La contraseña es obligatoria" ],
         trim: true,
     },
+    role: {
+        type: String,
+        required: [ true, "El rol es obligatorio" ],
+        lowercase: true,
+        enum: [ "admin", "standard" ], // Define los valores permitidos
+        default: "standard", // Valor por defecto
+    },
 }, {
-    timestamps: true, // Añade timestamps para generar createdAt y updatedAt
+    timestamps: true, // Añade timestamps para generar createdAt y updatedAt automáticamente
 });
 
-const UserModel = model("users", userSchema);
+// Crear y exportar el modelo de usuario
+const UserModel = model("User", userSchema);
 
 export default UserModel;
