@@ -2,14 +2,11 @@
 import mongoose from "mongoose";
 import UserModel from "../models/user.model.js";
 import { isValidID } from "../config/mongoose.config.js";
-import { createHash, isValidPassword } from "../utils/security.js";
 
 import {
     ERROR_INVALID_ID,
     ERROR_NOT_FOUND_ID,
-    ERROR_NOT_FOUND_CREDENTIALS,
-    ERROR_NOT_FOUND_EMAIL,
-    ERROR_NOT_FOUND_PROFILE,
+    ERROR_NOT_FOUND_PROFILE_GITHUB,
 } from "../constants/messages.constant.js";
 
 export default class UserManager {
@@ -27,6 +24,7 @@ export default class UserManager {
 
     #findById = async (id) => {
         const userFound = await this.#userModel.findById(id);
+
         if (!userFound) {
             throw new Error(ERROR_NOT_FOUND_ID);
         }
@@ -51,6 +49,7 @@ export default class UserManager {
     getOneById = async (id) => {
         try {
             this.#validateId(id);
+
             const userFound = await this.#findById(id);
             return userFound;
         } catch (error) {
@@ -61,27 +60,9 @@ export default class UserManager {
     getOneByGitHubId = async (profile) => {
         try {
             const userFound = await this.#userModel.findOne({ gitHubId: profile.id });
+
             if (!userFound) {
-                throw new Error(ERROR_NOT_FOUND_PROFILE);
-            }
-
-            return userFound;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    };
-
-    getOneByEmailAndPassword = async (email, password) => {
-        try {
-            const userFound = await this.#userModel.findOne({ email });
-            if (!userFound) {
-                throw new Error(ERROR_NOT_FOUND_CREDENTIALS);
-            }
-
-            const hash = userFound.password;
-
-            if (!isValidPassword(password, hash)) {
-                throw new Error(ERROR_NOT_FOUND_CREDENTIALS);
+                throw new Error(ERROR_NOT_FOUND_PROFILE_GITHUB);
             }
 
             return userFound;
@@ -92,7 +73,6 @@ export default class UserManager {
 
     insertOne = async (data) => {
         try {
-            data.password = data.password ? createHash(data.password) : null;
             const userCreated = new UserModel(data);
             await userCreated.save();
 
@@ -109,15 +89,9 @@ export default class UserManager {
     updateOneById = async (id, data) => {
         try {
             this.#validateId(id);
+
             const userFound = await this.#findById(id);
-
-            const newValues = {
-                ...data,
-                password: data.password ? createHash(data.password) : data.password,
-
-            };
-
-            userFound.set(newValues);
+            userFound.set(data);
             await userFound.save();
 
             return userFound;
@@ -133,25 +107,10 @@ export default class UserManager {
     deleteOneById = async (id) => {
         try {
             this.#validateId(id);
-            const userFound = await this.#findById(id);
 
+            const userFound = await this.#findById(id);
             await this.#userModel.findByIdAndDelete(id);
 
-            return userFound;
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    };
-
-    resetPasswordByEmail = async (email, password) => {
-        try {
-            const userFound = await this.#userModel.findOne({ email });
-            if (!userFound) {
-                throw new Error(ERROR_NOT_FOUND_EMAIL);
-            }
-
-            userFound.set({ password: createHash(password) });
-            await userFound.save();
             return userFound;
         } catch (error) {
             throw new Error(error.message);

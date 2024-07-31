@@ -19,8 +19,8 @@ export const isValidPassword = (password, hash) => {
 };
 
 // Genera un token JWT para un usuario
-export const generateToken = (id, role) => {
+export const generateToken = (id) => {
     // Crea un token empleando la clave secreta con tiempo de expiración de 2 horas
-    const token = jwt.sign({ id, role }, process.env.SECRET_KEY, { expiresIn: "2h" });
+    const token = jwt.sign({ id }, process.env.SECRET_KEY, { expiresIn: "2h" });
     return token;
 };

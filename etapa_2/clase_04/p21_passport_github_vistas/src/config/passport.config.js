@@ -20,7 +20,7 @@ const findOrCreateUser = async (profile) => {
         const user = await userManager.getOneByGitHubId(profile);
         return user;
     } catch (error) {
-        const newUser = await userManager.insertOne({ name: profile.displayName, gitHubId: profile.id });
+        const newUser = await userManager.insertOne({ fullName: profile.displayName, gitHubId: profile.id });
         return newUser;
     }
 };
@@ -44,8 +44,6 @@ export const config = (server) => {
     passport.serializeUser((user, done) => {
         const sessionData = {
             id: user._id,
-            name: user.name,
-            isEnabled: user.isEnabled,
         };
 
         done(null, sessionData);

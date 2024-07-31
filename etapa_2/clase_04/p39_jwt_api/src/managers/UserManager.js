@@ -26,6 +26,7 @@ export default class UserManager {
 
     #findById = async (id) => {
         const userFound = await this.#userModel.findById(id);
+
         if (!userFound) {
             throw new Error(ERROR_NOT_FOUND_ID);
         }
@@ -50,6 +51,7 @@ export default class UserManager {
     getOneById = async (id) => {
         try {
             this.#validateId(id);
+
             const userFound = await this.#findById(id);
             return userFound;
         } catch (error) {
@@ -60,6 +62,7 @@ export default class UserManager {
     getOneByEmailAndPassword = async (email, password) => {
         try {
             const userFound = await this.#userModel.findOne({ email });
+
             if (!userFound) {
                 throw new Error(ERROR_NOT_FOUND_CREDENTIALS);
             }
@@ -100,7 +103,6 @@ export default class UserManager {
             const newValues = {
                 ...data,
                 password: data.password ? createHash(data.password) : data.password,
-
             };
 
             userFound.set(newValues);
@@ -119,8 +121,8 @@ export default class UserManager {
     deleteOneById = async (id) => {
         try {
             this.#validateId(id);
-            const userFound = await this.#findById(id);
 
+            const userFound = await this.#findById(id);
             await this.#userModel.findByIdAndDelete(id);
 
             return userFound;
@@ -132,12 +134,14 @@ export default class UserManager {
     resetPasswordByEmail = async (email, password) => {
         try {
             const userFound = await this.#userModel.findOne({ email });
+
             if (!userFound) {
                 throw new Error(ERROR_NOT_FOUND_EMAIL);
             }
 
             userFound.set({ password: createHash(password) });
             await userFound.save();
+
             return userFound;
         } catch (error) {
             throw new Error(error.message);

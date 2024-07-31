@@ -6,7 +6,7 @@ export const ERROR_NOT_FOUND_ID = "ID no encontrado" ;
 export const ERROR_NOT_FOUND_INDEX = "Índice no encontrado" ;
 export const ERROR_NOT_FOUND_CREDENTIALS = "Email o contraseña incorrecta";
 export const ERROR_NOT_FOUND_EMAIL = "Email no encontrado";
-export const ERROR_NOT_FOUND_PROFILE = "Perfil no encontrado";
+export const ERROR_NOT_FOUND_PROFILE_GITHUB = "Perfil de GitHub no encontrado";
 
 export const ERROR_GET_DOCUMENT = "Error al obtener documento" ;
 export const ERROR_GET_ALL_DOCUMENT = "Error al obtener documentos" ;

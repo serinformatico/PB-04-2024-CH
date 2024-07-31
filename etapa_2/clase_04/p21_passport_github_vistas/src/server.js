@@ -5,7 +5,6 @@ import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 import { config as configPassport } from "./config/passport.config.js";
 
-import apiUsersRouter from "./routes/api.users.routes.js";
 import apiAuthRouter from "./routes/api.auth.routes.js";
 import homeRouter from "./routes/home.routes.js";
 
@@ -28,7 +27,6 @@ configPassport(server);
 configHandlebars(server);
 
 // Enrutadores
-server.use("/api/users", apiUsersRouter);
 server.use("/api/auth", apiAuthRouter);
 server.use("/", homeRouter);
 

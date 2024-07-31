@@ -20,30 +20,10 @@ export const checkAuth = async (req, res, next) => {
         // Agrega información del usuario en la solicitud
         req.user = {
             id: user._id,
-            role: user.role,
         };
 
         next();
     } catch (err) {
         res.status(401).json({ status: false, message: "Token inválido" });
-    }
-};
-
-// Middleware para verificar si el usuario tiene el rol estándar
-export const checkStandardRole = (req, res, next) => {
-    // Verificar el rol del usuario
-    if (req.user?.role === "standard") {
-        next();
-    } else {
-        res.status(403).json({ status: false, message: "No tenes los privilegios necesarios" });
-    }
-};
-
-export const checkAdminRole = (req, res, next) => {
-    // Verificar el rol del usuario
-    if (req.user?.role === "admin") {
-        next();
-    } else {
-        res.status(403).json({ status: false, message: "No tenes los privilegios necesarios" });
     }
 };

@@ -32,9 +32,6 @@ const userSchema = new Schema({
     role: {
         type: String,
         required: [ true, "El rol es obligatorio" ],
-        lowercase: true,
-        enum: [ "admin", "standard" ], // Define los valores permitidos
-        default: "standard", // Valor por defecto
     },
 }, {
     timestamps: true, // Añade timestamps para generar createdAt y updatedAt automáticamente
