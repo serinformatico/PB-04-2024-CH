@@ -7,6 +7,7 @@ import { createHash, isValidPassword } from "../utils/security.js";
 import {
     ERROR_INVALID_ID,
     ERROR_NOT_FOUND_ID,
+    ERROR_NOT_FOUND_CREDENTIALS,
 } from "../constants/messages.constant.js";
 
 export default class UserManager {
