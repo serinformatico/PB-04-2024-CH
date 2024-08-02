@@ -1,0 +1,31 @@
+<header>
+    <h1>Inicio</h1>
+</header>
+
+<main>
+    <section>
+        <h3>Menú</h3>
+        <ul>
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/logout">Cerrar Sesión</a></li>
+        </ul>
+
+        <div style="margin-top: 1rem;">
+            <ol>
+                <li><i>Colocar el valor de <b>httpOnly</b> en <b>false</b> en la cookie de tu endpoint</i></li>
+                <li><i>Iniciar sesión</i></li>
+                <li><i>Abrir la consola de tu navegador</i></li>
+                <li><i>Hacer clic en el botón "Intentar leer cookie desde el FrontEnd"</i></li>
+                <li><i>Colocar el valor de <b>httpOnly</b> en <b>true</b> en la cookie de tu endpoint</i></li>
+                <li><i>Comparar los resultados en la consola</i></li>
+            </ol>
+            <button onclick="getCookie()">Intentar leer cookie desde el FrontEnd</button>
+        </div>
+    </section>
+
+    <script>
+        const getCookie = () => {
+            console.log("COOKIES:", document.cookie);
+        };
+    </script>
+</main>

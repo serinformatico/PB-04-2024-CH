@@ -1,0 +1,62 @@
+<header>
+    <h1>Login</h1>
+</header>
+
+<main>
+    <section>
+        <form id="form" style="display:flex; flex-direction: column; gap: 0.25rem;">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password">
+            </div>
+
+            <div style="margin-top: 1rem;">
+                <input type="submit" value="Aceptar">
+                <a href="/"><input type="button" value="Volver al Menú"></a>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        const form = document.getElementById("form");
+
+        // Función de inicio de sesión
+        const login = async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+
+            const options = {
+                method: "POST",
+                body: JSON.stringify({
+                    email: email.value,
+                    password: password.value,
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            };
+
+            const response = await fetch("/api/auth/login", options);
+            const result = await response.json();
+
+            if (result.status) {
+                // Almacena el token de autenticación en localStorage
+                localStorage.setItem('authToken', result.token);
+
+                // Redirige a la página de inicio
+                window.location.href = '/';
+            } else {
+                alert(result.message);
+            }
+        };
+
+        // Asigna la función de inicio de sesión al evento de envío del formulario
+        form.onsubmit = login;
+    </script>
+</main>
