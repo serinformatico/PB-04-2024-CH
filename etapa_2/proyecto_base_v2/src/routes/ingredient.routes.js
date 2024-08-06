@@ -1,10 +1,7 @@
 import { Router } from "express";
 import moment from "moment";
 import IngredientManager from "../managers/ingredient.manager.js";
-
-import {
-    ERROR_SERVER,
-} from "../constants/messages.constant.js";
+import { handleError } from "../middlewares/error.middleware.js";
 
 const router = Router();
 const ingredientManager = new IngredientManager();
@@ -19,8 +16,11 @@ router.get("/:id/recipe/:rid", async (req, res) => {
 
         res.status(200).render("ingredient", { title: "Ingrediente", data });
     } catch (error) {
-        res.status(500).json({ status: false, ERROR_SERVER });
+        next(error);
     }
 });
+
+// Middleware de manejo de errores
+router.use(handleError);
 
 export default router;

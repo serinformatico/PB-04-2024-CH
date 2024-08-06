@@ -5,11 +5,11 @@ import { config as dotenvConfig } from "dotenv";
 import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 
-import apiRecipeRouter from "./routes/api/recipe.routes.js";
 import apiIngredientRouter from "./routes/api/ingredient.routes.js";
-import recipeRouter from "./routes/recipe.routes.js";
+import apiRecipeRouter from "./routes/api/recipe.routes.js";
 import homeRouter from "./routes/home.routes.js";
 import ingredientRouter from "./routes/ingredient.routes.js";
+import recipeRouter from "./routes/recipe.routes.js";
 
 const server = express();
 

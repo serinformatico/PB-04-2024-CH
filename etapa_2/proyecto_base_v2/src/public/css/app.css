@@ -25,27 +25,8 @@ h3 {
     width: 2rem;
 }
 
-.partial-navigator ul {
-    display: flex;
-    gap: 1rem;
-    list-style-type: none;
-    padding: 0;
-}
-
-.partial-navigator ul li a {
-    font-size: 1rem;
-    color: darkblue;
-    text-decoration: none;
-}
-
-.partial-navigator ul li a:hover {
-    border-top: 2px solid darkblue;
-    border-bottom: 2px solid darkblue;
-}
-
 .container-recipe__table,
-.container-home__table,
-.container-ingredients__table {
+.container-home__table {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -53,25 +34,21 @@ h3 {
 }
 
 .container-recipe__table table,
-.container-home__table table,
-.container-ingredients__table table {
+.container-home__table table {
     border: 1px solid black;
     border-collapse: collapse;
     width: 600px;
 }
 
 .container-recipe__table table tbody tr,
-.container-home__table table tbody tr,
-.container-ingredients__table table tbody tr {
+.container-home__table table tbody tr {
     border: 1px solid black;
 }
 
 .container-recipe__table thead tr th:nth-of-type(1),
 .container-recipe__table tbody tr td:nth-of-type(1),
 .container-home__table thead tr th:nth-of-type(1),
-.container-home__table tbody tr td:nth-of-type(1),
-.container-ingredients__table thead tr th:nth-of-type(1),
-.container-ingredients__table tbody tr td:nth-of-type(1) {
+.container-home__table tbody tr td:nth-of-type(1) {
     width: 165px;
     padding: 2px;
     border-right: 1px solid black;
@@ -80,9 +57,7 @@ h3 {
 .container-recipe__table thead tr th:nth-of-type(2),
 .container-recipe__table tbody tr td:nth-of-type(2),
 .container-home__table thead tr th:nth-of-type(2),
-.container-home__table tbody tr td:nth-of-type(2),
-.container-ingredients__table thead tr th:nth-of-type(2),
-.container-ingredients__table tbody tr td:nth-of-type(2) {
+.container-home__table tbody tr td:nth-of-type(2) {
     width: 250px;
     padding: 2px;
     border-right: 1px solid black;
@@ -91,18 +66,14 @@ h3 {
 .container-recipe__table thead tr th:nth-of-type(3),
 .container-recipe__table tbody tr td:nth-of-type(3),
 .container-home__table thead tr th:nth-of-type(3),
-.container-home__table tbody tr td:nth-of-type(3),
-.container-ingredients__table thead tr th:nth-of-type(3),
-.container-ingredients__table tbody tr td:nth-of-type(3) {
+.container-home__table tbody tr td:nth-of-type(3) {
     width: 80px;
     padding: 2px;
     border-right: 1px solid black;
 }
 
 .container-home__table thead tr th:nth-of-type(4),
-.container-home__table tbody tr td:nth-of-type(4),
-.container-ingredients__table thead tr th:nth-of-type(4),
-.container-ingredients__table tbody tr td:nth-of-type(4) {
+.container-home__table tbody tr td:nth-of-type(4) {
     padding: 2px;
     display: flex;
     justify-content: center;
@@ -164,17 +135,4 @@ h3 {
     border-radius: 0.5rem;
     width: 100%;
     margin: 0.25rem 0;
-}
-
-.container-error__http {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 5rem;
-    color: red
-}
-
-.container-error__http img {
-    width: 400px;
 }

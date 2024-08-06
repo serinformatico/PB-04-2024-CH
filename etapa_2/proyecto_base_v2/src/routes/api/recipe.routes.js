@@ -5,7 +5,7 @@ import { handleError } from "../../middlewares/error.middleware.js";
 const router = Router();
 const recipeManager = new RecipeManager();
 
-// Ruta para obtener todos los cursos
+// Ruta para obtener todas las recetas
 router.get("/", async (req, res, next) => {
     try {
         const recipes = await recipeManager.getAll(req.query);
@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-// Ruta para obtener un curso por su ID
+// Ruta para obtener una receta por su ID
 router.get("/:id", async (req, res, next) => {
     try {
         const recipe = await recipeManager.getOneById(req.params.id);
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res, next) => {
     }
 });
 
-// Ruta para crear un nuevo curso
+// Ruta para crear una nueva receta
 router.post("/", async (req, res, next) => {
     try {
         const recipe = await recipeManager.insertOne(req.body);
@@ -35,7 +35,7 @@ router.post("/", async (req, res, next) => {
     }
 });
 
-// Ruta para actualizar un curso existente por su ID
+// Ruta para actualizar una receta existente por su ID
 router.put("/:id", async (req, res, next) => {
     try {
         const recipe = await recipeManager.updateOneById(req.params.id, req.body);
@@ -45,7 +45,7 @@ router.put("/:id", async (req, res, next) => {
     }
 });
 
-// Ruta para eliminar un curso por su ID
+// Ruta para eliminar una receta por su ID
 router.delete("/:id", async (req, res, next) => {
     try {
         const recipe = await recipeManager.deleteOneById(req.params.id);
