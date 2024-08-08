@@ -31,15 +31,17 @@ const ingredientSchema = new Schema({
 });
 
 // Middleware que elimina la referencia en los recetas al eliminar el ingrediente.
-ingredientSchema.pre("findOne", async function(next) {
-    const Recipe = model("recipes");
+ingredientSchema.pre("deleteOne", async function(next) {
+    try {
+        await Recipe.updateMany(
+            { "ingredients.ingredient": this._id },
+            { $pull: { ingredients: { ingredient: this._id } } },
+        );
 
-    await Recipe.updateMany(
-        { "ingredients.ingredient._id": this._id },
-        { $pull: { ingredients: { "ingredient._id": this._id } } },
-    );
-
-    next();
+        next();
+    } catch (error) {
+        next(error);
+    }
 });
 
 // Agrega mongoose-paginate-v2 para habilitar las funcionalidades de paginación.

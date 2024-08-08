@@ -4,9 +4,6 @@ export const ERROR_NOT_FOUND_URL = "URL no encontrada" ;
 export const ERROR_INVALID_ID = "ID inválido" ;
 export const ERROR_NOT_FOUND_ID = "ID no encontrado" ;
 export const ERROR_NOT_FOUND_INDEX = "Índice no encontrado" ;
-export const ERROR_NOT_FOUND_CREDENTIALS = "Email o contraseña incorrecta";
-export const ERROR_NOT_FOUND_EMAIL = "Email no encontrado";
-export const ERROR_NOT_FOUND_GITHUB_ID = "ID GitHub no encontrado";
 
 export const ERROR_GET_DOCUMENT = "Error al obtener documento" ;
 export const ERROR_GET_ALL_DOCUMENT = "Error al obtener documentos" ;

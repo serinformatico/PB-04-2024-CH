@@ -1,8 +1,8 @@
-# Proyecto Base V2
+# Proyecto Base V1
 
 
 ### Contenido
-- [Proyecto Base V2](#proyecto-base-v2)
+- [Proyecto Base V1](#proyecto-base-v1)
     - [Contenido](#contenido)
     - [Instalación](#instalación)
     - [Estructura de directorios](#estructura-de-directorios)
@@ -40,12 +40,11 @@ Para instalar y ejecutar el proyecto, sigue estos pasos:
 El proyecto tiene la siguiente estructura de directorios:
 ```
 ├── backups/
-│   └── proyectoBaseV2/        # Backup de la base de datos del proyecto.
+│   └── proyectoBaseV1/        # Backup de la base de datos del proyecto.
 └── src/
     ├── config/                # Archivos de configuración del proyecto.
     ├── constants/             # Constantes utilizadas en el proyecto.
     ├── managers/              # Gestión y lógica de negocios.
-    ├── middlewares/           # Archivos interceptores.
     ├── models/                # Modelos de datos y esquemas de Mongoose.
     ├── public/                # Archivos estáticos públicos.
     │   ├── css/               # Estilos empleados en el FrontEnd.

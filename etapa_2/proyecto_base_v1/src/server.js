@@ -5,7 +5,7 @@ import { config as dotenvConfig } from "dotenv";
 import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 
-import apiUsersRouter from "./routes/api.users.routes.js";
+import apiPetRouter from "./routes/api/pet.routes.js";
 import homeRouter from "./routes/home.routes.js";
 
 const server = express();
@@ -27,7 +27,7 @@ connectDB();
 configHandlebars(server);
 
 // Enrutadores
-server.use("/api/users", apiUsersRouter);
+server.use("/api/pets", apiPetRouter);
 server.use("/", homeRouter);
 
 // Control de rutas inexistentes
