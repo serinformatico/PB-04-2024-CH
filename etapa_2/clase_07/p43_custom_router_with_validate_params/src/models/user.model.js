@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import paginate from "mongoose-paginate-v2";
+import { STANDARD, ROLES } from "../constants/roles.constant.js";
 
 const userSchema = new Schema({
     name: {
@@ -39,15 +40,14 @@ const userSchema = new Schema({
         type: String,
         required: [ true, "La contraseña es obligatoria" ],
     },
-    role: {
-        type: String,
-        required: [ true, "El rol es obligatorio" ],
-        lowercase: true,
+    roles: {
+        type: [String],
+        uppercase: true,
         enum: {
-            values: [ "user", "admin" ], // Los valores permitidos son "user" y "admin"
+            values: ROLES,
             message: "Rol no válido",
         },
-        default: "user", // El valor por defecto es "user"
+        default: [STANDARD], // El valor por defecto es "STANDARD"
     },
 }, {
     timestamps: true, // Añade timestamps para generar createdAt y updatedAt

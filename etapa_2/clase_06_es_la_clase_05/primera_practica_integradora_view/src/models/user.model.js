@@ -43,7 +43,10 @@ const userSchema = new Schema({
         type: String,
         required: [ true, "El rol es obligatorio" ],
         lowercase: true,
-        enum: [ "user", "admin" ], // Los valores permitidos son "user" y "admin"
+        enum: {
+            values: [ "user", "admin" ], // Los valores permitidos son "user" y "admin"
+            message: "Rol no válido",
+        },
         default: "user", // El valor por defecto es "user"
     },
 }, {
